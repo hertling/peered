@@ -1,0 +1,16 @@
+<% title "Work" %>
+
+<p>
+  <strong>Content:</strong>
+  <%= @work.content %>
+</p>
+<p>
+  <strong>Author:</strong>
+  <%= @work.author_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_work_path(@work) %> |
+  <%= link_to "Destroy", @work, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", works_path %>
+</p>
