@@ -1,0 +1,19 @@
+<% title "Editors" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Bio</th>
+  </tr>
+  <% for editor in @editors %>
+    <tr>
+      <td><%= editor.name %></td>
+      <td><%= editor.bio %></td>
+      <td><%= link_to "Show", editor %></td>
+      <td><%= link_to "Edit", edit_editor_path(editor) %></td>
+      <td><%= link_to "Destroy", editor, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Editor", new_editor_path %></p>

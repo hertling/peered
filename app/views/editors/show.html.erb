@@ -1,0 +1,16 @@
+<% title "Editor" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @editor.name %>
+</p>
+<p>
+  <strong>Bio:</strong>
+  <%= @editor.bio %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_editor_path(@editor) %> |
+  <%= link_to "Destroy", @editor, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", editors_path %>
+</p>

@@ -1,4 +1,6 @@
 Peered::Application.routes.draw do
+  resources :editors
+
   resources :works
 
   resources :authors
