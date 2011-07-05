@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Editor do
   before(:each) do
-    @attr = { :name => "Maddie Whitmarsh", :bio => "College Student" }
+    @attr = { :name => "Maddie Whitmoosh", :bio => "College Student" }
   end
 
   it "should create a new instance given valid attributes" do
