@@ -1,6 +1,7 @@
 class Author < ActiveRecord::Base
   attr_accessible :name, :bio
-
+  belongs_to :user
+  
   has_many :works
 
   validates :name, :presence => true, :length => { :maximum => 50 }

@@ -20,6 +20,7 @@
 			    <%= link_to "login", login_path, :id => "logout" %>
 			  <% end %>
 			</div>
+			<%= link_to "dashboard", root_path %>
       <%= content_tag :h1, yield(:title) if show_title? %>
       <%= yield %>
     </div>

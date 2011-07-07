@@ -1,7 +1,9 @@
 one:
   name: MyString
   bio: MyText
+  user_id: 1
 
 two:
   name: MyString
   bio: MyText
+  user_id: 2

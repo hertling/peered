@@ -9,13 +9,13 @@ class AuthorsController < ApplicationController
   end
 
   def new
-    @author = Author.new
+    @author = Author.new(:user_id => current_user)
   end
 
   def create
-    @author = Author.new(params[:author])
+    @author = current_user.authors.new(params[:author])
     if @author.save
-      redirect_to @author, :notice => "Successfully created author."
+      redirect_to root_path, :notice => "Successfully created author."
     else
       render :action => 'new'
     end

@@ -1,0 +1,20 @@
+<% title "Dashboard" %>
+
+<h2>Profile</h2>
+	<%= current_user.name %>
+	
+<h2>Authors Profiles</h2>
+<div class="explanation">Usually just one, unless you are working under multiple pen names</div>
+  <% current_user.authors.each  do | author | %>
+		<li><%= link_to author.name, author_path(author.id) %></li>
+	<% end %>
+	<%= "None found" if current_user.authors.empty? %>
+	<p><%= link_to "create author profile", new_author_path %></p>
+	
+<h2>Editor Profile</h2>
+	<% if current_user.editor.nil? %>
+		<p>No editor profile. <%= link_to "Create editor profile", new_editor_path %> if you want authors to submit works to you for editing.</p>
+	<% else %>
+	  <li><%= link_to current_user.editor.name, editor_path(current_user.editor.id)%></li>
+  <% end %>
+<p></p>

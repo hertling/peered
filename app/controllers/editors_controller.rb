@@ -12,9 +12,9 @@ class EditorsController < ApplicationController
   end
 
   def create
-    @editor = Editor.new(params[:editor])
+    @editor = current_user.create_editor(params[:editor])
     if @editor.save
-      redirect_to @editor, :notice => "Successfully created editor."
+      redirect_to root_path, :notice => "Successfully created editor."
     else
       render :action => 'new'
     end
