@@ -26,8 +26,9 @@ describe EditorsController do
   end
 
   it "create action should redirect when model is valid" do
+    @attr = { :name => "Bob", :bio => "Bob" }
     Editor.any_instance.stubs(:valid?).returns(true)
-    post :create
+    post :create, :editor => @attr
     response.should redirect_to(editor_url(assigns[:editor]))
   end
 
@@ -37,8 +38,9 @@ describe EditorsController do
   end
 
   it "update action should render edit template when model is invalid" do
+    @attr = { :name => "", :bio => "" }
     Editor.any_instance.stubs(:valid?).returns(false)
-    put :update, :id => Editor.first
+    put :update, :id => Editor.first, :editor => @attr
     response.should render_template(:edit)
   end
 
