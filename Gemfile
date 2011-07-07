@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.9'
 gem 'omniauth'
-
+gem 'heroku'
 
 gem 'sqlite3'
 gem 'will_paginate'
