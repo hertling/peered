@@ -18,6 +18,7 @@ group :test do
   gem 'rspec-rails', '2.6.1'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'mocha'
 end
 
 
@@ -43,4 +44,3 @@ end
 # group :development, :test do
 #   gem 'webrat'
 # end
-gem "mocha", :group => :test

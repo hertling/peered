@@ -1,7 +1,7 @@
 <% title "Dashboard" %>
 
 <h2>Profile</h2>
-	<%= current_user.name %>
+	<%= current_user.name if current_user %>
 	
 <h2>Authors Profiles</h2>
 <div class="explanation">Usually just one, unless you are working under multiple pen names</div>
