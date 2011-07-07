@@ -1,7 +1,9 @@
 one:
+  name: MyText
   content: MyText
   author_id: 1
 
 two:
+  name: MyText
   content: MyText
   author_id: 1

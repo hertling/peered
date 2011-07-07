@@ -44,7 +44,8 @@ describe WorksController do
 
   it "update action should redirect when model is valid" do
     Work.any_instance.stubs(:valid?).returns(true)
-    put :update, :id => Work.first
+    w = Work.first
+    put :update, :id => w.id, :author_id => w.author_id
     response.should redirect_to(work_url(assigns[:work]))
   end
 

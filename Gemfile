@@ -11,10 +11,13 @@ gem 'will_paginate'
 group :development do
   gem 'rspec-rails', '2.6.1'
   gem 'nifty-generators'
+  gem 'faker'
 end
 
 group :test do
   gem 'rspec-rails', '2.6.1'
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 

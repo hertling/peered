@@ -4,14 +4,22 @@ describe AuthorsController do
   fixtures :all
   render_views
 
-  it "index action should render index template" do
-    get :index
-    response.should render_template(:index)
+  describe "GET 'index'" do
+    it "index action should render index template" do
+      get :index
+      response.should render_template(:index)
+    end
   end
 
-  it "show action should render show template" do
-    get :show, :id => Author.first
-    response.should render_template(:show)
+  describe "GET 'show'" do
+    before(:each) do
+      @author = Factory(:author)
+    end
+
+    it "show action should render show template" do
+      get :show, :id => @author
+      response.should render_template(:show)
+    end
   end
 
   it "new action should render new template" do
@@ -19,16 +27,40 @@ describe AuthorsController do
     response.should render_template(:new)
   end
 
-  it "create action should render new template when model is invalid" do
-    Author.any_instance.stubs(:valid?).returns(false)
-    post :create
-    response.should render_template(:new)
-  end
+  describe "POST 'create'" do
+    describe "failure" do
+      before(:each) do
+        @attr = { :name => " ", :bio => " " }
+      end
 
-  it "create action should redirect when model is valid" do
-    Author.any_instance.stubs(:valid?).returns(true)
-    post :create
-    response.should redirect_to(author_url(assigns[:author]))
+      it "should not create an author" do
+        lambda do
+          post :create, :author => @attr
+        end.should_not change(Author, :count)
+      end
+
+      it "should render new template" do
+        post :create, :author => @attr
+        response.should render_template(:new)
+      end
+    end
+
+    describe "success" do
+      before(:each) do
+        @attr = { :name => "Bob", :bio => "Bob" }
+      end
+      
+      it "should create a user" do
+        lambda do
+          post :create, :author => @attr
+        end.should change(Author, :count).by(1)
+      end
+
+      it "should redirect to show page" do
+        post :create, :author => @attr
+        response.should redirect_to(author_path(assigns[:author]))
+      end
+    end
   end
 
   it "edit action should render edit template" do
@@ -36,16 +68,33 @@ describe AuthorsController do
     response.should render_template(:edit)
   end
 
-  it "update action should render edit template when model is invalid" do
-    Author.any_instance.stubs(:valid?).returns(false)
-    put :update, :id => Author.first
-    response.should render_template(:edit)
-  end
+  describe "PUT 'update'" do
 
-  it "update action should redirect when model is valid" do
-    Author.any_instance.stubs(:valid?).returns(true)
-    put :update, :id => Author.first
-    response.should redirect_to(author_url(assigns[:author]))
+    before(:each) do
+      @author = Factory(:author)
+    end
+
+    describe "failure" do
+      before(:each) do
+        @attr = { :name => " ", :bio => "" }
+      end
+
+      it "update action should render edit template when model is invalid" do
+        put :update, :id => @author, :author => @attr
+        response.should render_template(:edit)
+      end
+    end
+
+    describe "success" do
+      before(:each) do
+        @attr = { :name => "Bob", :bio => "Bob" }
+      end
+
+      it "update action should redirect when model is valid" do
+        put :update, :id => @author, :author => @attr
+        response.should redirect_to(author_url(@author))
+      end
+    end
   end
 
   it "destroy action should destroy model and redirect to index action" do
