@@ -1,7 +1,9 @@
 <% title "Dashboard" %>
 
+<% if current_user %>
+
 <h2>Profile</h2>
-	<%= current_user.name if current_user %>
+	<%= current_user.name %>
 	
 <h2>Authors Profiles</h2>
 <div class="explanation">Usually just one, unless you are working under multiple pen names</div>
@@ -18,3 +20,6 @@
 	  <li><%= link_to current_user.editor.name, editor_path(current_user.editor.id)%></li>
   <% end %>
 <p></p>
+<% else %>
+<p>Please log in first</p>
+<% end %>
