@@ -1,32 +1,22 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Author do
-  it "should be valid" do
-    Author.new.should be_valid
+  before(:each) do
+    @attr={:name =>'Will', :bio=>'RocketScientist'}
   end
 
-  describe "success" do
-    before(:each) do
-      @attr={:name =>'Will', :bio=>'RocketScientist'}
-    end
-    
-    it "should have a name" do
-      a = Author.new(@attr)
-      a.name.should == @attr[:name]
-    end
+  it "should make a new instance using valid attribute" do
+    Author.new(@attr).should be_valid
+  end
 
-    it "should have a bio" do
-      a = Author.new(@attr)
-      a.bio.should == @attr[:bio]
-    end
-    
-  end
-  
-  describe "failure" do
-    it "should reject an empty name" do
-      Author.new(:name=>"").should_not be_valid
-    end
-  end
+  it "should require a name"
+
+  it "should reject names that are too long"
+
+  it "should require a bio"
+
+  it "should reject bios that are too long"
+
 end
 
 
