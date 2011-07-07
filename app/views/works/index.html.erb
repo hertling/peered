@@ -2,18 +2,18 @@
 
 <table>
   <tr>
-    <th>Content</th>
-    <th>Author</th>
+    <th>Name</th>
+    <th>Updated</th>
   </tr>
   <% for work in @works %>
     <tr>
-      <td><%= work.content %></td>
-      <td><%= work.author_id %></td>
-      <td><%= link_to "Show", work %></td>
-      <td><%= link_to "Edit", edit_work_path(work) %></td>
-      <td><%= link_to "Destroy", work, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= work.name %></td>
+      <td><%= time_ago_in_words(work.updated_at) %> ago</td>
+      <td><%= link_to "Show", author_work_path(@author, work) %></td>
+      <td><%= link_to "Edit", edit_author_work_path(@author, work) %></td>
+      <td><%= link_to "Destroy", author_work_path(@author, work), :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>
 
-<p><%= link_to "New Work", new_work_path %></p>
+<p><%= link_to "New Work", new_author_work_path %></p>

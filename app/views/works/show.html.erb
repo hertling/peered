@@ -1,16 +1,23 @@
 <% title "Work" %>
 
 <p>
-  <strong>Content:</strong>
-  <%= @work.content %>
+  <strong>Name:</strong>
+  <%= @work.name %>
 </p>
 <p>
   <strong>Author:</strong>
-  <%= @work.author_id %>
+  <%= @work.author.name %>
+</p>
+<p>
+  <strong>Content:</strong>
+  <%= @work.content %>
 </p>
 
 <p>
-  <%= link_to "Edit", edit_work_path(@work) %> |
-  <%= link_to "Destroy", @work, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", works_path %>
+  <%= link_to "Edit", edit_author_work_path(@author, @work) %> |
+  <%= link_to "Destroy", author_work_path(@author, @work), :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", author_works_path(@author) %>
+</p>
+<p>
+  <%= link_to "Back to Author", author_path(@author) %>
 </p>

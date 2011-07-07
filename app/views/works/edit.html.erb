@@ -3,6 +3,6 @@
 <%= render 'form' %>
 
 <p>
-  <%= link_to "Show", @work %> |
-  <%= link_to "View All", works_path %>
+  <%= link_to "Show", [@author, @work] %> |
+  <%= link_to "View All", author_works_path(@author) %>
 </p>

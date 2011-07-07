@@ -8,9 +8,21 @@
   <strong>Bio:</strong>
   <%= @author.bio %>
 </p>
-
 <p>
   <%= link_to "Edit", edit_author_path(@author) %> |
   <%= link_to "Destroy", @author, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", authors_path %>
 </p>
+
+<h2>Works</h2>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Updated</th>
+  </tr>
+  <%= render @works %>
+</table>
+
+<p><%= link_to "New Work", new_author_work_path(@author) %></p>
+

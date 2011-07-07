@@ -1,9 +1,9 @@
 Peered::Application.routes.draw do
   resources :editors
 
-  resources :works
-
-  resources :authors
+  resources :authors do
+    resources :works
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
