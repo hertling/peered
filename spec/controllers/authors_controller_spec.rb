@@ -28,9 +28,13 @@ describe AuthorsController do
   end
 
   describe "POST 'create'" do
+    before(:each) do
+      user = Factory(:user)
+      test_sign_in user
+    end
     describe "failure" do
       before(:each) do
-        @attr = { :name => " ", :bio => " " }
+        @attr = { :name => " ", :bio => " ", :author_id => 0 }
       end
 
       it "should not create an author" do
@@ -58,7 +62,7 @@ describe AuthorsController do
 
       it "should redirect to show page" do
         post :create, :author => @attr
-        response.should redirect_to(author_path(assigns[:author]))
+        response.should redirect_to(root_path)
       end
     end
   end

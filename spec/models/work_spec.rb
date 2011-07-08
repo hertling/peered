@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: works
+#
+#  id         :integer         not null, primary key
+#  content    :text
+#  author_id  :integer
+#  created_at :datetime
+#  updated_at :datetime
+#  name       :string(255)
+#
+
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Work do

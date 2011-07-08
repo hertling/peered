@@ -12,6 +12,7 @@ group :development do
   gem 'rspec-rails', '2.6.1'
   gem 'nifty-generators'
   gem 'faker'
+  gem 'annotate', '2.4.0'
 end
 
 group :test do

@@ -19,17 +19,23 @@ describe EditorsController do
     response.should render_template(:new)
   end
 
-  it "create action should render new template when model is invalid" do
-    Editor.any_instance.stubs(:valid?).returns(false)
-    post :create
-    response.should render_template(:new)
-  end
+  describe "POST 'create'" do
+    before(:each) do
+      user = Factory(:user)
+      test_sign_in(user)
+    end
+    it "create action should render new template when model is invalid" do
+      Editor.any_instance.stubs(:valid?).returns(false)
+      post :create
+      response.should render_template(:new)
+    end
 
-  it "create action should redirect when model is valid" do
-    @attr = { :name => "Bob", :bio => "Bob" }
-    Editor.any_instance.stubs(:valid?).returns(true)
-    post :create, :editor => @attr
-    response.should redirect_to(editor_url(assigns[:editor]))
+    it "create action should redirect when model is valid" do
+      @attr = { :name => "Bob", :bio => "Bob" }
+      Editor.any_instance.stubs(:valid?).returns(true)
+      post :create, :editor => @attr
+      response.should redirect_to(root_path)
+    end
   end
 
   it "edit action should render edit template" do

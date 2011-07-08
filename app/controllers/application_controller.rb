@@ -5,10 +5,17 @@ class ApplicationController < ActionController::Base
   def dashboard
   end
 
-private
   def current_user
-    session[:user_id]=nil if params[:reset_id]=="true"
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= user_from_session
   end  
 
+  def current_user=(user)
+    @current_user = user
+  end
+
+private
+  def user_from_session
+    session[:user_id]=nil if params[:reset_id]=="true"
+    User.find(session[:user_id]) if session[:user_id]
+  end
 end
